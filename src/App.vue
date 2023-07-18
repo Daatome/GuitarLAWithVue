@@ -27,6 +27,7 @@ onMounted(()=>{
     if(localCarrito){
         carrito.value= JSON.parse(localCarrito)
     }
+   
 
 })
 
@@ -45,6 +46,12 @@ const agregarCarrito=( guitarra)=>{
         guitarra.cantidad=1
         carrito.value.push(guitarra)
     }
+    Swal.fire({
+    title: 'Agregado!',
+    text: `${guitarra.nombre} agregada`,
+    icon: 'success',
+    confirmButtonText: 'Cool!'
+    })
 
 }
 
@@ -65,11 +72,23 @@ const disminuirCantidad= (guitarra)=>{
 const eliminarProducto= (guitarra)=>{
     const index= carrito.value.indexOf(guitarra,0)
     carrito.value.splice(index,1)
+    Swal.fire({
+    title: 'Eliminado!',
+    text: `${guitarra.nombre} eliminada`,
+    icon: 'warning',
+    confirmButtonText: 'Cool!'
+    })
 
 }
 
 const vaciarCarrito= ()=>{
     carrito.value=[]
+    Swal.fire({
+    title: 'Eliminado!',
+    text: 'Carrito Vacio',
+    icon: 'info',
+    confirmButtonText: 'Oh no mis guitarras!'
+    })
 
 }
 
